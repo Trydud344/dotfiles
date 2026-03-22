@@ -1,10 +1,2 @@
 
-//@theme "/home/ivascu/.local/share/rofi/themes/spotlight.rasi"
-
-//@theme "/home/ivascu/.local/share/rofi/themes/spotlightfirst.rasi"
-
-//@theme "/home/ivascu/.local/share/rofi/themes/spotlight.rasi"
-
-//@theme "/home/ivascu/.local/share/rofi/themes/spotlightfirst.rasi"
-
-@theme "/home/ivascu/.local/share/rofi/themes/spotner.rasi"
+@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"

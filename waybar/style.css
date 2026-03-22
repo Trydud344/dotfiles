@@ -1,112 +1,165 @@
-@define-color text #f5f5f5;
-@define-color bg-dark rgba(20, 20, 20, 0.25);
-@define-color bg-module rgba(0, 0, 0, 0);
-@define-color bg-active rgba(70, 70, 70, 0.2);
+/* GRUVBOX DARK PALETTE */
+@define-color bg        #282828;
+@define-color gray1     #928374;
+@define-color red1      #cc241d;
+@define-color red2      #fb4934;
+@define-color green1    #98971a;
+@define-color green2    #b8bb26;
+@define-color yellow1   #d79921;
+@define-color yellow2   #fabd2f;
+@define-color blue1     #458588;
+@define-color blue2     #83a598;
+@define-color purple1   #b16286;
+@define-color purple2   #d3869b;
+@define-color aqua1     #689d6a;
+@define-color aqua2     #8ec07c;
+@define-color gray2     #a89984;
+@define-color fg        #ebdbb2;
+@define-color bg0_h     #1d2021;
+@define-color bg0       @bg;
+@define-color bg1       #3c3836;
+@define-color bg2       #504945;
+@define-color bg3       #665c54;
+@define-color bg4       #7c6f64;
+@define-color bg-gray   @gray1;
+@define-color bg0_s     #32302f;
+@define-color fg4       #a89984;
+@define-color fg3       #bdae93;
+@define-color fg2       #d5c4a1;
+@define-color fg1       @fg;
+@define-color fg0       #fbf1c7;
+@define-color orange1   #d65d0e;
+@define-color orange2   #fe8019;
 
+/* COLOR BINDS */
+@define-color waybar            @bg;
+@define-color text-main         @fg;
+@define-color text-opposite     @bg;
+@define-color text-alert        @red2;
+@define-color alert             @red1;
+@define-color warning           @orange1;
+@define-color ok                @aqua2;
+@define-color audio-output      @blue1;
+@define-color audio-input       @aqua1;
+@define-color tray-bg           @bg2;
+@define-color clock-bg          @yellow1;
+
+/* ELEMENT SETTINGS */
 * {
-  transition: none;
-  box-shadow: none;
+    font-family: "Hack Nerd Font", "Liberation Sans", sans-serif;
+    font-size: 13px;
+    color: @text-main;
+    background-color: transparent; /* Changed to transparent so module bgs show through */
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    text-shadow: none;
+    -gtk-icon-shadow: none;
 }
 
-#waybar {
-  font-family: "Source Code Pro", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: @text;
-  background: @bg-dark;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
-  padding: 4px 8px;
+window#waybar {
+    background-color: @waybar;
 }
 
+/* WORKSPACES RAINBOW */
 #workspaces {
-  margin: 0 4px;
+    background-color: transparent;
 }
 
 #workspaces button {
-  margin: 4px 0;
-  padding: 4px 8px;          /* padding restored */
-  color: @text;
-  background: transparent;
-  background-color: transparent;
-  background-image: none;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  transition: none;
+    padding: 0 10px;
+    color: @text-opposite;
+    font-weight: bold;
 }
 
-#workspaces button *,
-#workspaces button > * {
-  background: transparent;
-  background-color: transparent;
-  background-image: none;
-  box-shadow: none;
-  padding: 0;
-  margin: 0;
+#workspaces button:nth-child(1) { background-color: @red1; }
+#workspaces button:nth-child(2) { background-color: @orange1; }
+#workspaces button:nth-child(3) { background-color: @yellow1; }
+#workspaces button:nth-child(4) { background-color: @green1; }
+#workspaces button:nth-child(5) { background-color: @blue1; }
+#workspaces button:nth-child(6) { background-color: @purple1; }
+#workspaces button:nth-child(n+7) { background-color: @aqua1; }
+
+#workspaces button.active {
+    color: @fg0;
+    box-shadow: inset 0 -3px @fg0;
 }
 
-#workspaces button.active,
-#workspaces button.active * {
-  background: transparent;
-  background-color: transparent;
-  background-image: none;
-  color: @text;
+#workspaces button:hover {
+    background-color: @bg4;
+    color: @fg0;
 }
 
-#workspaces button.urgent,
-#workspaces button.urgent * {
-  background: transparent;
-  background-color: transparent;
-  background-image: none;
-  color: rgba(238, 46, 36, 1);
+/* AUDIO MODULES */
+#pulseaudio.output,
+#pulseaudio.input {
+    padding: 0 12px;
+    color: @text-opposite;
 }
 
-#tray {
-  margin: 4px;
-  background-color: @bg-module;
-  border-radius: 14px;
-}
+#pulseaudio.output { background-color: @audio-output; }
+#pulseaudio.input { background-color: @audio-input; }
+#pulseaudio.muted { color: @text-alert; }
 
-#tray * {
-  padding: 0 6px;
-  border-left: none;
-}
-
-#mode, #battery, #cpu, #memory, #pulseaudio, #backlight, #custom-storage, #custom-updates, #custom-weather, #custom-mail, #clock, #temperature, #language {
-  margin: 4px 2px;
-  padding: 6px 10px;
-  background-color: @bg-module;
-  border-radius: 14px;
-  min-width: 20px;
-  color: @text;
-}
-
-#pulseaudio.muted {
-  color: rgba(161, 105, 70, 1);
-}
-
-#pulseaudio.bluetooth {
-  color: rgba(134, 193, 185, 1);
-}
-
-#clock {
-  margin-left: 0px;
-  margin-right: 4px;
-  background-color: transparent;
-}
-
-#temperature.critical {
-  color: rgba(161, 105, 70, 1);
-}
-
+/* CENTER WINDOW */
 #window {
-  font-size: 13px;
-  font-weight: 400;
-  font-family: "Source Code Pro", sans-serif;
+    padding: 0 16px;
+    color: @text-main;
 }
 
-#language {
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: -1px;
+/* RIGHT MODULES */
+#tray { background-color: @tray-bg; padding: 0 12px; }
+#clock { background-color: @clock-bg; color: @text-opposite; padding: 0 12px; font-weight: 600; }
+
+/* ARROWS */
+#custom-arrow-right-workspaces,
+#custom-arrow-right-output,
+#custom-arrow-right-input,
+#custom-arrow-left-tray,
+#custom-arrow-left-clock {
+    font-family: "Hack Nerd Font Mono";
+    font-size: 20px;
 }
+
+/* Transitional coloring for Powerline arrows */
+#custom-arrow-right-workspaces {
+    color: @aqua1; /* Color of last rainbow workspace */
+    background-color: @audio-output;
+}
+
+#custom-arrow-right-output {
+    color: @audio-output;
+    background-color: @audio-input;
+}
+
+#custom-arrow-right-input {
+    color: @audio-input;
+    background-color: @waybar;
+}
+
+#custom-arrow-left-tray {
+    color: @tray-bg;
+    background-color: @waybar;
+}
+
+#custom-arrow-left-clock {
+    color: @clock-bg;
+    background-color: @tray-bg;
+}
+
+/* ANIMATIONS */
+@keyframes text-blink { to { color: @text-alert; } }
+#pulseaudio.muted {
+    animation-name: text-blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* TOOLTIP */
+tooltip { background: @bg1; border: 1px solid @bg3; border-radius: 4px; padding: 8px; }
+tooltip label { color: @text-main; }
