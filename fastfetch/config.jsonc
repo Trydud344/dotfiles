@@ -1,0 +1,32 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "source": "/home/ivascu/Downloads/evil-king-von-king-von.gif", // Path to your GIF
+    "type": "kitty-icat",                             // Use "iterm" if on WezTerm/iTerm2
+    "height": 18,                                     // Adjust based on your font size
+    "width": 35,                                      // Adjust for aspect ratio
+    "padding": {
+      "top": 0,
+      "left": 2
+    }
+  },
+  "modules": [
+    "title",
+    "separator",
+    "os",
+    "host",
+    "kernel",
+    "uptime",
+    "packages",
+    "shell",
+    "display",
+    "de",
+    "wm",
+    "terminal",
+    "cpu",
+    "gpu",
+    "memory",
+    "break",
+    "colors"
+  ]
+}
